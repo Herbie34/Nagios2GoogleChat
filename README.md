@@ -12,7 +12,8 @@ Nagios notifications for Google Chat
 
 * Copy the script to your plugin directory. (paths may vary)
 
-* Edit the webhook url and thread id.
+* Create gchat.cfg and edit the webhook url and thread id.
+(example in gchat.cfg.sample)
 
 * Define the new gchat notification commands in Nagios.
 (example in gchat_commands.cfg, modify paths as required)
