@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 # load webhook url and thread id
-#url='https://chat.googleapis.com/v1/spaces/xxxxxxxxx/messages?key=xxxxxxxx&token=xxxxxxxx'
-#id=spaces/xxxxxxxxx/threads/xxxxxxxx
 . $(readlink -f "$(dirname "${BASH_SOURCE:-$0}")/gchat.cfg")
 
 # gchat notification commands
