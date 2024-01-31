@@ -1,2 +1,6 @@
 url='https://chat.googleapis.com/v1/spaces/xxxxxxxxx/messages?key=xxxxxxxx&token=xxxxxxxx'
-id=spaces/xxxxxxxxx/threads/xxxxxxxx
+url+='&messageReplyOption=REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD'
+eval_thread_key=false
+thread_key=MY-THREAD
+#eval_thread_key=true
+#thread_key='Nagios-${hname}-${ntype}'

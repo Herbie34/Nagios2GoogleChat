@@ -7,7 +7,7 @@
 #
 # define command {
 #   command_name  gchat-host
-#   command_line  /usr/lib64/nagios/plugins/gchat_notify.sh "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTADDRESS$" "$HOSTSTATE$" "$HOSTOUTPUT$" "$LONGDATETIME$"
+#   command_line  /usr/lib64/nagios/plugins/gchat_host_notify.sh "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTADDRESS$" "$HOSTSTATE$" "$HOSTOUTPUT$" "$LONGDATETIME$"
 # }
 
 json_escape() {
@@ -35,6 +35,10 @@ case $state in
 	*)	icon="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ3SURBVFhH7ZXPixJhGMe9SZeIHdbASyJsexKkoMOeDIo9bVhCV0dQ6biBih4MD0GJ9gM8LCblwU0pLMFrxB4kIxBEKBAvUnjxIBP+A0/zfZnZHad3Rl2d3ct+4eGdHy/v5zPv+86M7SIXWTbhcFiMRqMkVzcSibySW38wGLyi3LY2KrxcLlO9XqdCoUCpVAoy1gup8Gq1Sp1OZ6ba7ba1QmZwXq1VaFk4rzhCkjK8edYB11c+n2czoiCMYyV8roDVcFOBs4AbCpwVHBwFeZJzhSO42Ww2qdfrcQdbtpaCI+gwnU5ZTSYTGo1GNBgMFhb69ukDfX35jB2bwQ+3NsTDrU0vg2qjCiSTScpkMlSpVNgHZDwezxUCvH7jGn3cFujgkWgKR5/31wWpsi34GFiNKgAgwBCACK6bCf1ofmbwP7ccrAB4cm/XEI4+P286IEG4xuCI3FnSg4yEstns8XL9qr5jUAz8d+fqjAQPru0zI4AfhDy4X/lhdAEyEur3++z47e83rIwkAFgIzsuiQmp9yT3lSpwKzss8oVKpxKZdD1wZnkgk9lGxWGzm1YGQy+VieyIQCBxvOP2UrwzP5XJUq9UIrXwuhUKhhtvt3pdvQ4iB0aI/YolAq9Wi4XDIyuFwkNPpJEEQGFgj4NXD0WqPTy0hVwNPDxm73U4+n49EUWQFAY/HQ3c2L/+3/jjnXVtaQg32gTL9DbkkzALgj2/vcEHPH+5JqLVK6OJ9sHHpiAf4fvCaLVmxWKT8/d2uZRL4seDbjs+rOvCLvbtH6pKl02mKx+N+7f7gfopXiSqhfyosmfb1VSXQl/tHXCUYcJEnQp8TuM32D+NMyUA5/H77AAAAAElFTkSuQmCC" ;;
 esac
 
+if "${eval_thread_key:-false}"; then
+	thread_key=$(eval echo "$thread_key")
+fi
+
 # sending notification to gchat
 curl -4 -X POST \
 	"$url" \
@@ -42,7 +46,7 @@ curl -4 -X POST \
 	-d @- <<-__EOD__
 		{
 			"thread": {
-				"name": "$id"
+				"threadKey": "$thread_key"
 			},
 			"cardsV2": [{
 				"card": {
