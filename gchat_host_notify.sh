@@ -7,7 +7,7 @@
 #
 # define command {
 #   command_name  gchat-host
-#   command_line  /usr/lib64/nagios/plugins/gchat_host_notify.sh "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTADDRESS$" "$HOSTSTATE$" "$HOSTOUTPUT$" "$LONGDATETIME$"
+#   command_line  $USER1$/gchat_host_notify.sh "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTADDRESS$" "$HOSTSTATE$" "$HOSTOUTPUT$" "$LONGDATETIME$"
 # }
 
 json_escape() {

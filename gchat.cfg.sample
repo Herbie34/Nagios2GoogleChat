@@ -3,4 +3,4 @@ url+='&messageReplyOption=REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD'
 eval_thread_key=false
 thread_key=MY-THREAD
 #eval_thread_key=true
-#thread_key='Nagios-${hname}-${ntype}'
+#thread_key='Nagios-${hname}-$(date +%Y%m%d)'

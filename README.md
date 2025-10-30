@@ -5,14 +5,9 @@ Nagios notifications for Google Chat
 * Define an incoming webhook in your Room.</br>
 (https://developers.google.com/hangouts/chat/how-tos/webhooks)
 
-* Get thread id to push alert in the same thread by executing "python3 quickstart.py"
-
-  Example output:
- ({'content-type': 'app...... **"thread": { "name": "spaces/AAAArebtt4Y/threads/Ks0DXiY1kZg"**  } ....."createTime": "2020-08-15T07:37:23.566327Z"\n}\n')
-
 * Copy the script to your plugin directory. (paths may vary)
 
-* Create gchat.cfg and edit the webhook url and thread id.
+* Create gchat.cfg and edit the webhook url and thread key.
 (example in gchat.cfg.sample)
 
 * Define the new gchat notification commands in Nagios.
